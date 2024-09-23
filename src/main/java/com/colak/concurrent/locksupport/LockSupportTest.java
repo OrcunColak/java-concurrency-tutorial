@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
-/**
- * LockSupport provides alternative for the deprecated method of thread suspend() and resume().
- * See https://medium.com/@avinashsoni9829/locks-in-java-part-3-locksupport-607d8766ed1a
- */
+// LockSupport provides alternative for the deprecated method of thread suspend() and resume().
+// See https://medium.com/@avinashsoni9829/locks-in-java-part-3-locksupport-607d8766ed1a
 @Slf4j
-public class LockSupportTest {
+class LockSupportTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main() throws InterruptedException {
         List<Integer> counters = new ArrayList<>();
         final int[] count = {0};
         Thread workerThread = new Thread(() -> {

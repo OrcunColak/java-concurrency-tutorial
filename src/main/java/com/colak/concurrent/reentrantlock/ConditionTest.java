@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
-public class ConditionTest {
+class ConditionTest {
 
     private final ReentrantLock lock = new ReentrantLock(true);
     private int balance = 0;
