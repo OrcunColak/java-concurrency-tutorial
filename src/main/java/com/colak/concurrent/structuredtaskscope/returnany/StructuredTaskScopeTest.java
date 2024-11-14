@@ -8,7 +8,7 @@ import java.util.concurrent.StructuredTaskScope;
 
 // See <a href="https://medium.com/@phoenixrising_93140/what-is-structured-concurrency-java-21-6134374696be">...</a>
 @Slf4j
-public class StructuredTaskScopeTest {
+class StructuredTaskScopeTest {
 
     public static void main() throws Exception {
         StructuredTaskScopeTest structuredTaskScopeTest = new StructuredTaskScopeTest();

@@ -2,7 +2,7 @@ package com.colak.concurrent.structuredtaskscope.returnany;
 
 import java.util.concurrent.StructuredTaskScope;
 
-public class StructuredTaskScopeTest2 {
+class StructuredTaskScopeTest2 {
 
     public static void main() {
         try (var scope = new StructuredTaskScope.ShutdownOnSuccess<String>()) {
