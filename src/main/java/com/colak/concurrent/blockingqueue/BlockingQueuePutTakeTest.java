@@ -8,7 +8,18 @@ import java.util.concurrent.BlockingQueue;
 
 @Slf4j
 @UtilityClass
-class BlockingQueueTest {
+class BlockingQueuePutTakeTest {
+
+    public static void main() {
+        // We need to give a capacity
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+
+        Producer producer = new Producer(queue);
+        Consumer consumer = new Consumer(queue);
+
+        new Thread(producer).start();
+        new Thread(consumer).start();
+    }
 
     static class Producer implements Runnable {
         private final BlockingQueue<Integer> queue;
@@ -52,14 +63,5 @@ class BlockingQueueTest {
         }
     }
 
-    public static void main() {
-        // We need to give a capacity
-        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
-        Producer producer = new Producer(queue);
-        Consumer consumer = new Consumer(queue);
-
-        new Thread(producer).start();
-        new Thread(consumer).start();
-    }
 }
