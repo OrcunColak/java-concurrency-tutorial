@@ -10,19 +10,27 @@ import java.util.concurrent.ThreadFactory;
 @Slf4j
 class PlatformThreadTest {
 
-    public static void main(String[] args) {
+    public static void main() {
 
         Runnable runnable = () -> log.info("Thread started");
+
         // Start a daemon thread to run a task
-        Thread thread1 = Thread.ofPlatform().daemon().start(runnable);
+        Thread thread1 = Thread.ofPlatform()
+                .daemon()
+                .start(runnable);
 
         // Create an unstarted thread with name "duke", its start() method
         // must be invoked to schedule it to execute.
-        Thread thread2 = Thread.ofPlatform().name("duke").unstarted(runnable);
+        Thread thread2 = Thread.ofPlatform()
+                .name("duke")
+                .unstarted(runnable);
         thread2.start();
 
         // A ThreadFactory that creates daemon threads named "worker-0", "worker-1", ...
-        ThreadFactory factory = Thread.ofPlatform().daemon().name("worker-", 0).factory();
+        ThreadFactory factory = Thread.ofPlatform()
+                .daemon()
+                .name("worker-", 0)
+                .factory();
         Thread thread3 = factory.newThread(runnable);
         thread3.start();
     }
