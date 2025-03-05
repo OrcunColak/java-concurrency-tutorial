@@ -15,8 +15,18 @@ class PlatformThreadTest {
         Runnable runnable = () -> log.info("Thread started");
 
         // Start a daemon thread to run a task
-        Thread thread1 = Thread.ofPlatform()
+        Thread daemonThread1 = Thread.ofPlatform()
                 .daemon()
+                .start(runnable);
+
+        Thread daemonThread2 = Thread.ofPlatform()
+                      .daemon()
+                .name("my-custom-thread")
+                .unstarted(runnable);
+        daemonThread2.start();
+
+        // Start a thread to run a task
+        Thread thread1 = Thread.ofPlatform()
                 .start(runnable);
 
         // Create an unstarted thread with name "duke", its start() method
