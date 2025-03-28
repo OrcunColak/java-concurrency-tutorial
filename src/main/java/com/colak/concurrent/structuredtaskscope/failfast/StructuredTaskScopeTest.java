@@ -24,7 +24,7 @@ public class StructuredTaskScopeTest {
             StructuredTaskScope.Subtask<String> respB = scope.fork(this::justAnotherLongRunningTask);
             scope.join();
             scope.throwIfFailed();
-            return STR."\{respA.get()} \{respB.get()}";
+            return respA.get() + " " + respB.get();
         }
     }
 
